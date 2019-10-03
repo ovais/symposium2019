@@ -1,15 +1,19 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29215.179
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.572
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sitecore.Demo.CortexWorkers", "Sitecore.Demo.CortexWorkers\Sitecore.Demo.CortexWorkers.csproj", "{B554BD4A-920E-4B48-999D-AABE71F1298C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sitecore.Demo.Model", "Sitecore.Demo.Model\Sitecore.Demo.Model.csproj", "{93846635-83C0-4D0D-BAFB-D9DB7F743F40}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sitecore.Demo.Model", "Sitecore.Demo.Model\Sitecore.Demo.Model.csproj", "{93846635-83C0-4D0D-BAFB-D9DB7F743F40}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sitecore.Demo.CortexWorkers.Options", "Sitecore.Demo.CortexWorkers.Options\Sitecore.Demo.CortexWorkers.Options.csproj", "{D4F4F381-06A9-4B9E-A182-83317C13692F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sitecore.Demo.CortexWorkers.Options", "Sitecore.Demo.CortexWorkers.Options\Sitecore.Demo.CortexWorkers.Options.csproj", "{D4F4F381-06A9-4B9E-A182-83317C13692F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sitecore.Demo.Personalization", "Sitecore.Demo.Personalization\Sitecore.Demo.Personalization.csproj", "{88E0C663-87E8-4A12-B50D-C45148E3F219}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "XConnectExtensions", "XConnectExtensions", "{D74EF20C-EE23-405F-BF9E-04DBCB6EA369}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XConnectModelSerialization", "XConnectModelSerialization\XConnectModelSerialization.csproj", "{EF3F0CB9-1A3C-4531-B30B-5ED1AA1D7FF7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,9 +37,17 @@ Global
 		{88E0C663-87E8-4A12-B50D-C45148E3F219}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{88E0C663-87E8-4A12-B50D-C45148E3F219}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{88E0C663-87E8-4A12-B50D-C45148E3F219}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF3F0CB9-1A3C-4531-B30B-5ED1AA1D7FF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF3F0CB9-1A3C-4531-B30B-5ED1AA1D7FF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF3F0CB9-1A3C-4531-B30B-5ED1AA1D7FF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF3F0CB9-1A3C-4531-B30B-5ED1AA1D7FF7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{93846635-83C0-4D0D-BAFB-D9DB7F743F40} = {D74EF20C-EE23-405F-BF9E-04DBCB6EA369}
+		{EF3F0CB9-1A3C-4531-B30B-5ED1AA1D7FF7} = {D74EF20C-EE23-405F-BF9E-04DBCB6EA369}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {32A5A288-80C3-4F81-A260-6B64F9024C04}

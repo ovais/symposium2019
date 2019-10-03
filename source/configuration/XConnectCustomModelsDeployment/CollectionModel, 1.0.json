@@ -1,0 +1,56 @@
+{
+  "Name": "CollectionModel",
+  "Version": "1.0",
+  "References": [
+    {
+      "Name": "XConnect",
+      "Version": "1.0"
+    },
+    {
+      "Name": "Sitecore.XConnect.Collection.Model",
+      "Version": "9.0"
+    }
+  ],
+  "Types": {
+    "Sitecore.Demo.Model.XConnect.Facets.RunnerFacet": {
+      "Type": "Facet",
+      "BaseType": "Sitecore.XConnect.Facet",
+      "ClrType": "Sitecore.Demo.Model.XConnect.Facets.RunnerFacet, Sitecore.Demo.Model, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "Properties": {
+        "IsMorningRunner": {
+          "Type": "Boolean"
+        },
+        "IsEveningRunner": {
+          "Type": "Boolean"
+        }
+      }
+    },
+    "Sitecore.Demo.Model.XConnect.Events.RunStarted": {
+      "Type": "Event",
+      "BaseType": "Sitecore.XConnect.Event",
+      "ClrType": "Sitecore.Demo.Model.XConnect.Events.RunStarted, Sitecore.Demo.Model, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "Properties": {
+        "Time": {
+          "Type": "DateTime"
+        }
+      }
+    },
+    "Sitecore.Demo.Model.XConnect.Events.RunEnded": {
+      "Type": "Event",
+      "BaseType": "Sitecore.XConnect.Event",
+      "ClrType": "Sitecore.Demo.Model.XConnect.Events.RunEnded, Sitecore.Demo.Model, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "Properties": {
+        "Time": {
+          "Type": "DateTime"
+        }
+      }
+    }
+  },
+  "Facets": [
+    {
+      "Target": "Contact",
+      "Name": "RunnerFacet",
+      "Type": "Sitecore.Demo.Model.XConnect.Facets.RunnerFacet"
+    }
+  ]
+}
