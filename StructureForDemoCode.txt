@@ -16,16 +16,16 @@ Statistics:
 	}
 }
 
-Contact Facet: 
+Contact Facet:
 
 6 AM to 9 AM is morning
 7 PM to 11 PM is Evening
 
 RunnerProfile
 {
-MorningRunner: Double (where double is probility of time) (if had 10 runs and 7 runs in the morning then your morning run score is 7) 
-EveningRunner:Double 
-LastEvaluated: //if we LastModified cannot be used from Search 
+MorningRunner: Double (where double is probability of time) (if had 10 runs and 7 runs in the morning then your morning run score is 7)
+EveningRunner:Double
+LastEvaluated: //if we LastModified cannot be used from Search
 }
 
 Cortex Worker (Project)
@@ -37,35 +37,25 @@ Has the options for the cortex workers
 
 
 (Project)
-Conditions for persoalization
+Conditions for personalization
 Include file to patch loading of RunnerProfile Facet with session start
 Implement the personalization conditions
 if (MorningRunner >= n)
 if (EveningRunner >= n)
-The assembly to execute cortex (deployed to CM) (implent the interface for sitecore task scheduler).
+The assembly to execute cortex (deployed to CM) (implement the interface for sitecore task scheduler).
 
 
 Project(s)
-Talk Sumith, this can be separate Solution or same. May be use Habitat demo. 
+Talk Sumith, this can be separate Solution or same. May be use Habitat demo.
 Content (create a package use Helix)
 Login Page: Need code to identify the contact (just ignore the password and use the email to identify the contact).
 Personalized profile page to show Content (three states, MorningRunner, EveningRunner and no behaviour)
-Page to execute the Cortex job (we can also use Sitecore Schceduled tasks) using the assembly. 
+Page to execute the Cortex job (we can also use Sitecore Scheduled tasks) using the assembly.
 
-Mobile App Simulator 
+Mobile App Simulator
 	C# client which can call Universal Tracker
 	Channel: Mobile App to specify the channel. (need to setup UT configuration to setup channel properly)
-	
-	
+
+
 Stretch Objective
-Using Cortex export the data to a database and show that in PowerBI. 
-
- 
-
-
-
-
-
-
-
-
+Using Cortex export the data to a database and show that in PowerBI.
