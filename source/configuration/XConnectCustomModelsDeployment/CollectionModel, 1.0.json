@@ -18,10 +18,10 @@
       "ClrType": "Sitecore.Demo.Model.XConnect.Facets.RunnerFacet, Sitecore.Demo.Model, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "IsMorningRunner": {
-          "Type": "Boolean"
+          "Type": "Double"
         },
         "IsEveningRunner": {
-          "Type": "Boolean"
+          "Type": "Double"
         }
       }
     },
