@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Settings>
+  <Sitecore>
+    <Processing>
+      <Services>
+        <TaskServicesFactory>
+          <Options>
+            <RunnersWorker>
+              <Type>Sitecore.Demo.CortexWorkers.RunnersWorker, Sitecore.Demo.CortexWorkers</Type>
+            </RunnersWorker>
+          </Options>
+        </TaskServicesFactory>
+      </Services>
+    </Processing>
+  </Sitecore>
+</Settings>
