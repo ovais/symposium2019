@@ -1,0 +1,10 @@
+<Settings>
+    <XConnect>
+        <Models>
+            <Custom>
+                <TypeName>Sitecore.Demo.Model.XConnect.XConnectExtensions.CollectionModel, Sitecore.Demo.Model</TypeName>
+                <PropertyName>Model</PropertyName>
+            </Custom>
+        </Models>
+    </XConnect>
+</Settings>

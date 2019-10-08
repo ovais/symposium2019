@@ -7,7 +7,7 @@ namespace XConnectModelSerialization
 {
     internal class Program
     {
-        private static void Main(string[] args)
+        private static void Main()
         {
             Console.WriteLine("Generating your model...");
 
@@ -15,14 +15,14 @@ namespace XConnectModelSerialization
 
             var serializedModel = XdbModelWriter.Serialize(model);
 
-            var pathToOutput = "c:\\temp\\";
+            var pathToOutput = AppContext.BaseDirectory;
 
             if (!Directory.Exists(pathToOutput)) Directory.CreateDirectory(pathToOutput);
 
-            File.WriteAllText(pathToOutput + model.FullName + ".json", serializedModel);
+            var modelFullName = pathToOutput + model.FullName + ".json";
+            File.WriteAllText(modelFullName, serializedModel);
 
-            Console.WriteLine("Press any key to continue! Your model is here: " + "c:\\temp\\" + model.FullName +
-                              ".json");
+            Console.WriteLine($"Press any key to continue! Your model is here: {modelFullName}");
             Console.ReadKey();
         }
     }
