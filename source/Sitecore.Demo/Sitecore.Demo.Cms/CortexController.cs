@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using Sitecore.Demo.Model.XConnect.Events;
@@ -61,6 +62,47 @@ namespace Sitecore.Demo.Cms
             var processingTaskProgress = await _taskManager.GetTaskProgressAsync(taskId);
 
             return new ContentResult {Content = processingTaskProgress.Status.ToString()};
+        }
+
+        public async Task<ActionResult> GenerateData(int amountOfContacts = 10, int amountOfInteractions = 10)
+        {
+            using (IXdbContext xdbContext = SitecoreXConnectClientConfiguration.GetClient())
+            {
+                for (var c = 0; c < amountOfContacts; c++)
+                {
+                    var contact = new Contact(new ContactIdentifier("sitecore.demo", Guid.NewGuid().ToString(),
+                        ContactIdentifierType.Known));
+
+                    var currentDate = DateTime.UtcNow;
+                    xdbContext.AddContact(contact);
+
+                    for (var i = 1; i <= amountOfInteractions; i++)
+                    {
+                        // Even are morning runners. 10AM for morning runner and 6PM for evening one. :
+                        var startTime = 10 + c % 2 * 8;
+                        var startDate = currentDate.Date.AddDays(-i).AddHours(startTime);
+                        var endDate = startDate.AddHours(1);
+                        var interaction =
+                            new Interaction(contact, InteractionInitiator.Contact, /*TODO: Channel ID*/Guid.NewGuid(),
+                                "Some Agent")
+                            {
+                                Events =
+                                {
+                                    new RunStarted( /*TODO: Definition ID*/Guid.NewGuid(), startDate)
+                                        {Time = startDate},
+                                    new RunEnded( /*TODO: Definition ID*/Guid.NewGuid(), endDate)
+                                        {Time = endDate}
+                                }
+                            };
+
+                        xdbContext.AddInteraction(interaction);
+                    }
+                }
+
+                await xdbContext.SubmitAsync();
+            }
+
+            return new HttpStatusCodeResult(HttpStatusCode.OK);
         }
     }
 }
