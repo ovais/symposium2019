@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Settings>
+    <Sitecore>
+        <XConnect.Client>
+            <Services>
+                <Client.Configuration>
+                    <Options>
+                        <Models>
+                            <DemoModel>
+                                <TypeName>Sitecore.Demo.Model.XConnect.XConnectExtensions.CollectionModel, Sitecore.Demo.Model</TypeName>
+                                <PropertyName>Model</PropertyName>
+                            </DemoModel>
+                        </Models>
+                    </Options>
+                </Client.Configuration>
+            </Services>
+        </XConnect.Client>
+    </Sitecore>
+</Settings>

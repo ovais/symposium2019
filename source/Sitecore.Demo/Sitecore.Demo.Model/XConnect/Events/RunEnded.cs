@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using Sitecore.XConnect;
 
 namespace Sitecore.Demo.Model.XConnect.Events

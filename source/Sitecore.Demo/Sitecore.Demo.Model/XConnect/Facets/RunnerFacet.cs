@@ -9,7 +9,7 @@ namespace Sitecore.Demo.Model.XConnect.Facets
     {
         public const string DefaultFacetKey = "RunnerFacet";
 
-        public bool IsMorningRunner { get; set; }
-        public bool IsEveningRunner { get; set; }
+        public double IsMorningRunner { get; set; }
+        public double IsEveningRunner { get; set; }
     }
 }

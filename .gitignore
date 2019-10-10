@@ -1,1 +1,4 @@
 /source/Sitecore.Demo/packages
+*.user
+/bin
+/obj
