@@ -7,8 +7,7 @@ namespace Sitecore.Demo.Personalization.Conditions
     {
         protected override double GetRunnerValue(RunnerFacet runnerFacet)
         {
-            return 0.5;
-            //return runnerFacet.IsEveningRunner;
+            return runnerFacet.IsEveningRunner;
         }
     }
 }
