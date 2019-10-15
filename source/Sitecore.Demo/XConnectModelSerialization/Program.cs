@@ -19,11 +19,10 @@ namespace XConnectModelSerialization
 
             if (!Directory.Exists(pathToOutput)) Directory.CreateDirectory(pathToOutput);
 
-            var modelFullName = pathToOutput + model.FullName + ".json";
+            var modelFullName = pathToOutput + "LetsPlay.XConnectModel, 1.0" + ".json";
             File.WriteAllText(modelFullName, serializedModel);
 
-            Console.WriteLine($"Press any key to continue! Your model is here: {modelFullName}");
-            Console.ReadKey();
+            
         }
     }
 }

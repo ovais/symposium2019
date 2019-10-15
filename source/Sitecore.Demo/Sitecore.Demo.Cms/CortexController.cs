@@ -22,9 +22,11 @@ namespace Sitecore.Demo.Cms
             _taskManager = taskManager;
         }
 
-        public async Task<ActionResult> RegisterRunnersTask(
-            string morningHoursEnd = "12", string eveningHoursStart = "17")
+        public async Task<ActionResult> RegisterRunnersTask()
         {
+
+            string morningHoursEnd = "12";
+            string eveningHoursStart = "17";
             using (IXdbContext client = SitecoreXConnectClientConfiguration.GetClient())
             {
                 var searchRequest = client.Contacts
@@ -98,6 +100,25 @@ namespace Sitecore.Demo.Cms
                         xdbContext.AddInteraction(interaction);
                     }
                 }
+
+                await xdbContext.SubmitAsync();
+            }
+
+            return new HttpStatusCodeResult(HttpStatusCode.OK);
+        }
+
+        public async Task<ActionResult> GenerateUsers()
+        {
+            using (IXdbContext xdbContext = SitecoreXConnectClientConfiguration.GetClient())
+            {
+                    var ovais = new Contact(new ContactIdentifier("letsplay", "ovais.akhter@sitecore.com",
+                        ContactIdentifierType.Known));
+                var sumith = new Contact(new ContactIdentifier("letsplay", "sumith.damodaran@sitecore.com",
+                        ContactIdentifierType.Known));
+
+                xdbContext.AddContact(ovais);
+                xdbContext.AddContact(sumith);
+
 
                 await xdbContext.SubmitAsync();
             }
