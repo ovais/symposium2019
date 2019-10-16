@@ -98,7 +98,7 @@
         Contact Identificator: <asp:TextBox ID="contactIdentificator" Width="300" runat="server" />
         <br>
         <asp:Button ID="GetContact" runat="server" Text="Get Facet" OnClick="GetContactFacet_Click" />
-        <asp:Button ID="IdentifyContact" runat="server" Text="Get Facet" OnClick="IdentifyContact_Click" />
+        <asp:Button ID="IdentifyContact" runat="server" Text="Identify Contact" OnClick="IdentifyContact_Click" />
         <br>
         <p ID="ContactFacet" style="white-space: pre" runat="server" />
     </div>
