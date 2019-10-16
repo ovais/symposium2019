@@ -45,8 +45,8 @@
                     {
                         ContractResolver = new XdbJsonContractResolver(client.Model, serializeFacets: true, serializeContactInteractions: true),
                         //DefaultValueHandling = DefaultValueHandling.Include
-                       // ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
-                       // NullValueHandling = NullValueHandling.Ignore
+                        // ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+                        // NullValueHandling = NullValueHandling.Ignore
                     });
                 }
                 else
@@ -58,6 +58,20 @@
             {
                 ContactFacet.InnerText = "Contact not found.";
             }
+        }
+    }
+
+    protected void IdentifyContact_Click(object sender, EventArgs e)
+    {
+        if (contactIdentificator.Text == "" || contactSource.Text == "")
+        {
+            ContactFacet.InnerText = "Empty identifiers";
+        }
+        else
+        {
+            Tracker.Current.Session.IdentifyAs(contactSource.Text, contactIdentificator.Text);
+
+            ContactFacet.InnerText = ContactFacet.InnerText ?? "" + "<br>Contact has been identified";
         }
     }
 
@@ -83,7 +97,8 @@
         <br>
         Contact Identificator: <asp:TextBox ID="contactIdentificator" Width="300" runat="server" />
         <br>
-        <asp:Button ID="IdentifyContact" runat="server" Text="Get Facet" OnClick="GetContactFacet_Click" />
+        <asp:Button ID="GetContact" runat="server" Text="Get Facet" OnClick="GetContactFacet_Click" />
+        <asp:Button ID="IdentifyContact" runat="server" Text="Get Facet" OnClick="IdentifyContact_Click" />
         <br>
         <p ID="ContactFacet" style="white-space: pre" runat="server" />
     </div>
