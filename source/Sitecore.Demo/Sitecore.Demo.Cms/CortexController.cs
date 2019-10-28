@@ -22,6 +22,36 @@ namespace Sitecore.Demo.Cms
             _taskManager = taskManager;
         }
 
+        public async Task<ActionResult> RegisterExportToGoogleBigQuery()
+        {
+            using (IXdbContext client = SitecoreXConnectClientConfiguration.GetClient())
+            {
+                var searchRequest = client.Contacts
+                    .Where(c => c.Interactions.Any(i => i.Events.OfType<RunEnded>().Any(x => true)))
+                    .WithExpandOptions(new ContactExpandOptions(RunnerFacet.DefaultFacetKey)
+                    {
+                        Interactions = new RelatedInteractionsExpandOptions
+                        {
+                            Limit = int.MaxValue
+                        }
+                    })
+                    .GetSearchRequest();
+
+                var dataSourceOptions = new ContactSearchDataSourceOptionsDictionary(searchRequest, 100, 100);
+
+                var workerOptions = new Dictionary<string, string>();
+
+                var taskId = await _taskManager.RegisterDistributedTaskAsync(
+                    dataSourceOptions,
+                    new DistributedWorkerOptionsDictionary(
+                        "Sitecore.Demo.CortexWorkers.ExportToBigQueryWorker, Sitecore.Demo.CortexWorkers", workerOptions),
+                    null,
+                    TimeSpan.FromHours(1));
+
+                return new ContentResult { Content = taskId.ToString() };
+
+            }
+        }
         public async Task<ActionResult> RegisterRunnersTask()
         {
 
@@ -58,6 +88,40 @@ namespace Sitecore.Demo.Cms
                 return new ContentResult {Content = taskId.ToString()};
             }
         }
+
+        public async Task<ActionResult> RegisterDeleteTask()
+        {
+            
+            using (IXdbContext client = SitecoreXConnectClientConfiguration.GetClient())
+            {
+                var searchRequest = client.Contacts
+                    .Where(c => c.Interactions.Any(i => i.Events.OfType<RunEnded>().Any(x => true)))
+                    .WithExpandOptions(new ContactExpandOptions(RunnerFacet.DefaultFacetKey)
+                    {
+                        Interactions = new RelatedInteractionsExpandOptions
+                        {
+                            Limit = int.MaxValue
+                        }
+                    })
+                    .GetSearchRequest();
+
+                var dataSourceOptions = new ContactSearchDataSourceOptionsDictionary(searchRequest, 100, 100);
+
+               
+
+                var taskId = await _taskManager.RegisterDistributedTaskAsync(
+                    dataSourceOptions,
+                    new DistributedWorkerOptionsDictionary(
+                        "Sitecore.Demo.CortexWorkers.DeleteContactWorker, Sitecore.Demo.CortexWorkers", new Dictionary<string,string>()),
+                    null,
+                    TimeSpan.FromHours(1));
+
+                return new ContentResult { Content = taskId.ToString() };
+            }
+        }
+
+
+        
 
         public async Task<ActionResult> GetRunnersTaskStatus(Guid taskId)
         {

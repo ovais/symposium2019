@@ -2,9 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+	<RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Google.Cloud.BigQuery.V2" Version="1.3.0" />
     <PackageReference Include="Sitecore.Processing.Engine.Abstractions" Version="9.2.0" />
   </ItemGroup>
 

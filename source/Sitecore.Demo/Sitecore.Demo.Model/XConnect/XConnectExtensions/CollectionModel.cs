@@ -11,7 +11,7 @@ namespace Sitecore.Demo.Model.XConnect.XConnectExtensions
 
         private static XdbModel BuildModel()
         {
-            var modelBuilder = new XdbModelBuilder("CollectionModel", new XdbModelVersion(1, 0));
+            var modelBuilder = new XdbModelBuilder("LetsPlayModel.XConnectModel", new XdbModelVersion(1, 0));
 
             modelBuilder.ReferenceModel(Sitecore.XConnect.Collection.Model.CollectionModel.Model);
 

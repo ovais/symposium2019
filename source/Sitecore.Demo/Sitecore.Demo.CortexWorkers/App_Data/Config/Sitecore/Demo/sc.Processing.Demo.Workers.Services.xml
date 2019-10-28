@@ -8,6 +8,12 @@
             <RunnersWorker>
               <Type>Sitecore.Demo.CortexWorkers.RunnersWorker, Sitecore.Demo.CortexWorkers</Type>
             </RunnersWorker>
+            <ExportToBigQueryWorker>
+              <Type>Sitecore.Demo.CortexWorkers.ExportToBigQueryWorker, Sitecore.Demo.CortexWorkers</Type>
+            </ExportToBigQueryWorker>
+            <DeleteContactWorker>
+              <Type>Sitecore.Demo.CortexWorkers.DeleteContactWorker, Sitecore.Demo.CortexWorkers</Type>
+            </DeleteContactWorker>
           </Options>
         </TaskServicesFactory>
       </Services>
