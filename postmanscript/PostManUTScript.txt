@@ -1,0 +1,29 @@
+PUT /interaction HTTP/1.1
+Host: universaltracker.habitathomedemo.com
+Content-Type: application/json
+cache-control: no-cache
+Postman-Token: f0139ba6-3db0-47d1-a432-efdf6c2c8643
+
+{
+    "ChannelId": "27b4e611-a73d-4a95-b20a-811d295bdf77",
+    "Initiator": "contact",
+    "Contact": {
+        "Source": "letsplay",
+        "Identifier": "ovais.akhter@sitecore.com"
+    },
+    "UserAgent": "Lets Play App",
+    "Events": [
+        {
+            "type": "RunStarted",
+            "Time": "2017-10-11T05:00:00.0000000Z",
+            "Timestamp": "2017-10-11T05:00:00.0000000Z",
+            "DefinitionId": "4AC8B092-0747-4E67-A908-4D5B1C6DAE70"
+        },
+        {
+            "type": "RunEnded",
+            "Time": "2017-10-11T06:00:00.0000000Z",
+            "Timestamp": "2017-10-11T06:00:00.0000000Z",
+            "DefinitionId": "4AC8B092-0747-4E67-A908-4D5B1C6DAE70"
+        }
+    ]
+}
