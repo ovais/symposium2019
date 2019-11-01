@@ -2,7 +2,7 @@ param(
     [Parameter(Mandatory = $false)][string] $instancesRoot = "C:\inetpub\wwwroot\",
     [Parameter(Mandatory = $false)][string] $configuration = "debug"
 )
-#& {iisreset /Stop}
+& {iisreset /Stop}
 
 #define paths and names
 $services = "habitathome_xconnect.dev.local-ProcessingEngineService"
@@ -116,4 +116,4 @@ Write-Host "Starting the Cortex Service" -ForegroundColor "Green"
 Start-Service $services
 
 
-#& {iisreset /Start}
+& {iisreset /Start}

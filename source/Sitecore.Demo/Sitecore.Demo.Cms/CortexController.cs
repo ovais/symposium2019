@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using Sitecore.Demo.Model.XConnect.Events;
 using Sitecore.Demo.Model.XConnect.Facets;
 using Sitecore.Processing.Engine.Abstractions;
+using Sitecore.Processing.Tasks.Options.DataSources.DataExtraction;
 using Sitecore.Processing.Tasks.Options.DataSources.Search;
 using Sitecore.XConnect;
 using Sitecore.XConnect.Client.Configuration;
@@ -49,6 +50,36 @@ namespace Sitecore.Demo.Cms
                     TimeSpan.FromHours(1));
 
                 return new ContentResult { Content = taskId.ToString() };
+
+            }
+        }
+
+        public async Task<JsonResult> RegisterExportToGoogleBigQueryWithInteractions()
+        {
+            using (IXdbContext client = SitecoreXConnectClientConfiguration.GetClient())
+            {
+                var interactionFacets = client.Model.Facets.Where(c => c.Target == EntityType.Interaction).Select(x => x.Name);
+                var contactFacets = client.Model.Facets.Where(c => c.Target == EntityType.Contact).Select(x => x.Name);
+
+                var expandOptions = new InteractionExpandOptions(interactionFacets.ToArray())
+                {
+                    Contact = new RelatedContactExpandOptions(contactFacets.ToArray())
+                };
+
+                InteractionDataSourceOptionsDictionary interactionDataSourceOptionsDictionary =
+                    new InteractionDataSourceOptionsDictionary(expandOptions, 1000, 100);
+
+
+                var workerOptions = new Dictionary<string, string>();
+
+                var taskId = await _taskManager.RegisterDistributedTaskAsync(
+                    interactionDataSourceOptionsDictionary,
+                    new DistributedWorkerOptionsDictionary(
+                        "Sitecore.Demo.CortexWorkers.ExportToBigQueryUsingInteractions, Sitecore.Demo.CortexWorkers", workerOptions),
+                    null,
+                    TimeSpan.FromHours(1));
+
+                return Json(new { TaskId = taskId.ToString() }, JsonRequestBehavior.AllowGet);
 
             }
         }
@@ -119,15 +150,11 @@ namespace Sitecore.Demo.Cms
                 return new ContentResult { Content = taskId.ToString() };
             }
         }
-
-
         
-
-        public async Task<ActionResult> GetRunnersTaskStatus(Guid taskId)
+        public async Task<JsonResult> GetTaskStatus(Guid taskId)
         {
             var processingTaskProgress = await _taskManager.GetTaskProgressAsync(taskId);
-
-            return new ContentResult {Content = processingTaskProgress.Status.ToString()};
+            return Json( processingTaskProgress, JsonRequestBehavior.AllowGet);
         }
 
         public async Task<ActionResult> GenerateData(int amountOfContacts = 10, int amountOfInteractions = 10)
@@ -190,4 +217,5 @@ namespace Sitecore.Demo.Cms
             return new HttpStatusCodeResult(HttpStatusCode.OK);
         }
     }
+
 }

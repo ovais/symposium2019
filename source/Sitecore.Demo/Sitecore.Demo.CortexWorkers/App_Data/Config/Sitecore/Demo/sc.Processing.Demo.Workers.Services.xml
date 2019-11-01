@@ -14,6 +14,9 @@
             <DeleteContactWorker>
               <Type>Sitecore.Demo.CortexWorkers.DeleteContactWorker, Sitecore.Demo.CortexWorkers</Type>
             </DeleteContactWorker>
+            <ExportToBigQueryUsingInteractions>
+              <Type>Sitecore.Demo.CortexWorkers.ExportToBigQueryUsingInteractions, Sitecore.Demo.CortexWorkers</Type>
+            </ExportToBigQueryUsingInteractions>
           </Options>
         </TaskServicesFactory>
       </Services>
